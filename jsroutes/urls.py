@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import url
+from jsroutes.views import routes
 
 
-urlpatterns = patterns("jsroutes.views",
-    url(r"^routes\.js$", "routes", name="jsroutes"),
-)
+urlpatterns = [
+    url(r"^routes\.js$", routes, name="jsroutes"),
+]
