@@ -1,9 +1,10 @@
 # coding: utf-8
 
-from django.conf.urls import url, urlpatterns
+from django.conf.urls import url, patterns
 from jsroutes.views import routes
 
 
-urlpatterns = [
+urlpatterns = patterns('',
     url(r"^routes\.js$", routes, name="jsroutes"),
-]
+)
+
