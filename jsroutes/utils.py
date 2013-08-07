@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import re
-
 from django.core.urlresolvers import RegexURLPattern, RegexURLResolver
 from django.conf import settings
 from django.utils.importlib import import_module
-from django.utils import simplejson
 from django.template.loader import get_template
 from django.template import Context
+import json
+import re
 
 
 __all__ = ("javascript", )
@@ -64,6 +63,6 @@ def collect_urls(urls, item, ns=None, prefixes=[]):
 urls = []
 collect_urls(urls, import_module(settings.ROOT_URLCONF).urlpatterns)
 urls.reverse()
-urls = simplejson.dumps(urls)
+urls = json.dumps(urls)
 tmpl = get_template("jsroutes.js")
 javascript = tmpl.render(Context({"urls": urls}))
